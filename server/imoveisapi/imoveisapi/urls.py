@@ -27,5 +27,9 @@ router.register('imoveis',views.ImoveisDetail,basename='Imoveis')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/',include('auth.urls')),
     path('api/',include(router.urls))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

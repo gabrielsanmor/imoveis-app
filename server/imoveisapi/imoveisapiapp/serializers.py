@@ -1,8 +1,10 @@
 from .models import Imovel,AnexoImovel
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 
 class ImovelAnexoSerializer(serializers.ModelSerializer):
-    imagem = serializers.FileField()
+    imagem = serializers.ImageField()
 
     class Meta:
         model = AnexoImovel
@@ -22,7 +24,9 @@ class ImovelSerializerMin(serializers.ModelSerializer):
         model = Imovel
         fields = ['exibicao','descricao','tipo','area','logradouro','valor_compra','valor_venda','imagens']
     
-    def get_img(self,obj):
+    def get_imagens(self,obj):
         request = self.context.get('request')
         aux = AnexoImovel.objects.filter(imovel=obj).first()
-        return ImovelAnexoSerializer(aux).data
+        aux = ImovelAnexoSerializer(aux).data
+        aux['imagem']= request.build_absolute_uri(aux['imagem'])
+        return aux
