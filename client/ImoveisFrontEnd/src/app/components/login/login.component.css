@@ -1,0 +1,34 @@
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+.button-end {
+  flex:1;
+  display:flex;
+  justify-content: flex-end;
+}
+
+
+.button-start {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.div-bot{
+  display:flex;
+  align-items:center;
+}
