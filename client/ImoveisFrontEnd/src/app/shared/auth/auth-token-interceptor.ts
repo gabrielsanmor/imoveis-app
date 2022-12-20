@@ -20,10 +20,10 @@ import {
       private router: Router
     ) {}
     intercept(req: HttpRequest<any>,next: HttpHandler): Observable<HttpEvent<any>> {
-      if (req.url.indexOf('login') > -1 || req.url.indexOf('refreshtoken') > -1) {
+      if (req.url.indexOf('login') > -1 || req.url.indexOf('refreshtoken') > -1 || req.url.indexOf('cadastro') > -1) {
         return next.handle(req);
       }
-      
+
       const localStorageTokens = localStorage.getItem('tokens');
       var tok: TokenModel;
       if (localStorageTokens) {

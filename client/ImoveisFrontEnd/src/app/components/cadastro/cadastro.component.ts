@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { CadastroModel } from '../../model/cadastro-model'
 
 @Component({
   selector: 'app-cadastro',
@@ -8,12 +10,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CadastroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authservice:AuthService) { }
 
   cadastro: FormGroup = new FormGroup({
     username: new FormControl(''),
-    nome: new FormControl(''),
-    sobrenome:new FormControl(''),
+    first_name: new FormControl(''),
+    last_name:new FormControl(''),
     email: new FormControl(''),
     senha: new FormControl(''),
     senha2: new FormControl(''),
@@ -23,7 +25,18 @@ export class CadastroComponent implements OnInit {
   }
 
   submit(){
+    var aux:CadastroModel= this.cadastro.value
+    console.log(aux)
+    this.authservice.cadastro(aux).subscribe({
+      next(value) {
+        console.log(value)
+      },error(err) {
+        console.log(err)
+      },
+      complete() {
 
+      },
+    })
   }
 
 }

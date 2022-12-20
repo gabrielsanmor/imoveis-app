@@ -20,7 +20,7 @@ export class AuthService {
   jwtService: JwtHelperService = new JwtHelperService()
 
   login(login:LoginModel){
-    return this.http.post(auth_url+'/login/',login,).
+    return this.http.post(auth_url+'login/',login,).
     pipe(
       map(
         (data) =>{
@@ -41,11 +41,11 @@ export class AuthService {
   }
 
   cadastro(cadastro:CadastroModel){
-      return this.http.post(auth_url+'/cadastro/',cadastro)
+    return this.http.post(auth_url+'cadastro/',cadastro)
   }
 
   refreshToken(refresh:string){
-    return this.http.post<string>(auth_url+'/login/refresh',refresh,)
+    return this.http.post<string>(auth_url+'login/refresh',refresh,)
   }
 
   public getAccessToken():string|null{

@@ -4,7 +4,7 @@
         Bem vindo a Imóveis S/A
       </mat-card-title>
       <mat-card-content>
-        <form [formGroup]="cadastro" (ngSubmit)="submit">
+        <form [formGroup]="cadastro" (ngSubmit)="submit()">
           <p>
             <mat-form-field>
               <input matInput placeholder="Username" formControlName="username">
@@ -12,12 +12,12 @@
           </p>
           <p>
             <mat-form-field>
-              <input matInput placeholder="Nome" formControlName="nome">
+              <input matInput placeholder="Nome" formControlName="first_name">
             </mat-form-field>
           </p>
           <p>
             <mat-form-field>
-              <input matInput placeholder="Sobrenome" formControlName="sobrenome">
+              <input matInput placeholder="Sobrenome" formControlName="last_name">
             </mat-form-field>
           </p>
           <p>
@@ -28,6 +28,11 @@
           <p>
             <mat-form-field>
               <input matInput placeholder="Senha" type="password" formControlName="senha">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Confirmar Senha" type="password" formControlName="senha2">
             </mat-form-field>
           </p>
           <div class="div-bot">
