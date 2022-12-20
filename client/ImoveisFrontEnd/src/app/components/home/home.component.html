@@ -1,1 +1,24 @@
-<p>home works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+  <h4>Imoveis S/A</h4>
+  <span class="spacer"></span>
+  <h5 >{{user?.username}}</h5>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #sidenav mode="over">
+    <button mat-button [routerLink]="['../','dashboard']">
+      Dashboard
+    </button>
+    <button mat-button [routerLink]="['../','imoveis']">
+      Novo Imóvel
+    </button>
+    <button mat-button [routerLink]="['../','addimoveis']">
+      Imóveis
+    </button>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

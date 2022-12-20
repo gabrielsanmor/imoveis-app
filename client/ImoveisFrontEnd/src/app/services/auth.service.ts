@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, catchError, map, ObservableInput, of, switchMap,firstValueFrom, Observable } from 'rxjs';
 import { LoginModel } from '../model/login-model';
 import { TokenModel } from '../shared/auth/token-model';
 import { User } from '../model/user.model';
 import { CadastroModel } from '../model/cadastro-model';
+import { Token } from '@angular/compiler';
 
 const auth_url = 'http://127.0.0.1:8000/auth/'
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,19 +51,41 @@ export class AuthService {
   }
 
   refreshToken(refresh:string){
-    return this.http.post<string>(auth_url+'login/refresh',refresh,)
+    return this.http.post<string>(auth_url+'login/refresh/',{
+      'refresh':refresh
+    },httpOptions)
   }
 
   public getAccessToken():string|null{
     var aux = localStorage.getItem('tokens')
+
     if(aux){
       var tok = JSON.parse(aux) as TokenModel
       var isAccessExpired = this.jwtService.isTokenExpired(tok.access)
+      var isRefreshExpired = this.jwtService.isTokenExpired(tok.refresh)
+
       if(isAccessExpired){
+        if(isRefreshExpired){
           this.user.next(null);
           return "";
-      }
+        }else{
+          this.refreshToken(tok.refresh).pipe(
+            switchMap(
+              (response:string, i:number) => {
+                var j:TokenModel= {} as TokenModel
+                j.access=response
+                localStorage.setItem('tokens', JSON.stringify(tok));
+                var user = this.jwtService.decodeToken(
+                    tok.access
+                ) as User;
+                this.user.next(user);
 
+                return of(response)
+              }
+            )
+          )
+        }
+      }
       var use = this.jwtService.decodeToken(tok.access) as User
 
       this.user.next(use)

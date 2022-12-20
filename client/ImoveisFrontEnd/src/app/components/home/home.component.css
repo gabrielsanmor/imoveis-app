@@ -1,0 +1,10 @@
+.spacer{
+  flex: 1 1 auto;
+}
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}

@@ -20,7 +20,7 @@ import {
       private router: Router
     ) {}
     intercept(req: HttpRequest<any>,next: HttpHandler): Observable<HttpEvent<any>> {
-      if (req.url.indexOf('login') > -1 || req.url.indexOf('refreshtoken') > -1 || req.url.indexOf('cadastro') > -1) {
+      if (req.url.indexOf('login') > -1 || req.url.indexOf('refresh') > -1 || req.url.indexOf('cadastro') > -1) {
         return next.handle(req);
       }
 
@@ -35,7 +35,7 @@ import {
             if(!this.jwtHelper.isTokenExpired(tok.refresh)){
                 return this.authService.refreshToken(tok.refresh).pipe(
                 switchMap((access:string) => {
-                    tok.access= access
+                    tok.access=access
                     localStorage.setItem('tokens', JSON.stringify(tok));
                     var user = this.jwtHelper.decodeToken(
                         access

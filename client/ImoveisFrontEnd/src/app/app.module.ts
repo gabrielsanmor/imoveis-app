@@ -14,6 +14,9 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './shared/auth/auth-guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddImoveisComponent } from './components/add-imoveis/add-imoveis.component';
+import { ImoveisComponent } from './components/imoveis/imoveis.component';
 
 export function jwtOptionFactor(authService:AuthService){
   return {
@@ -35,7 +38,10 @@ export function jwtOptionFactor(authService:AuthService){
     AppComponent,
     LoginComponent,
     CadastroComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    AddImoveisComponent,
+    ImoveisComponent
   ],
   imports: [
     BrowserModule,

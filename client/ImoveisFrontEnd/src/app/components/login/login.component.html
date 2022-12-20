@@ -1,10 +1,10 @@
 <div class="main-div">
   <mat-card>
       <mat-card-title>
-        Bem vindo a Imóveis S/A
+        Iniciar Sessão
       </mat-card-title>
       <mat-card-content>
-        <form [formGroup]="login" (ngSubmit)="submit">
+        <form [formGroup]="login" (ngSubmit)="submit()">
           <p>
             <mat-form-field>
               <input matInput placeholder="Username" formControlName="username">
@@ -12,7 +12,7 @@
           </p>
           <p>
             <mat-form-field>
-              <input matInput placeholder="Senha" type="password" formControlName="senha">
+              <input matInput placeholder="Senha" type="password" formControlName="password">
             </mat-form-field>
           </p>
           <div class="div-bot">
