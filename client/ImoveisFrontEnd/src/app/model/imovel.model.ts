@@ -1,3 +1,5 @@
+import { Anexo } from "./anexo.model";
+
 export interface Imovel{
   pk?: number;
   exibicao?: string;
@@ -7,4 +9,5 @@ export interface Imovel{
   logradouro?: string;
   valor_compra?: number;
   valor_venda?:  number;
+  imagens: Anexo[]
 }

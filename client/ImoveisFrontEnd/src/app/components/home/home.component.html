@@ -4,17 +4,18 @@
   </button>
   <h4>Imoveis S/A</h4>
   <span class="spacer"></span>
+  <mat-icon>person</mat-icon>
   <h5 >{{user?.username}}</h5>
 </mat-toolbar>
 <mat-drawer-container>
   <mat-drawer #sidenav mode="over">
-    <button mat-button [routerLink]="['../','dashboard']">
+    <button class="buttonD" mat-button [routerLink]="['../','dashboard']">
       Dashboard
     </button>
-    <button mat-button [routerLink]="['../','imoveis']">
-      Novo Imóvel
+    <button class="buttonD" mat-button [routerLink]="['../','editar-usuario']">
+      Editar Usuário
     </button>
-    <button mat-button [routerLink]="['../','addimoveis']">
+    <button class="buttonD" mat-button [routerLink]="['../','imoveis']">
       Imóveis
     </button>
   </mat-drawer>

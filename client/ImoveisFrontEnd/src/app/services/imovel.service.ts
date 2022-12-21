@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Imovel } from '../model/imovel.model';
+import { ImoveisResult } from '../model/imoveis-result-model';
 
 const url = 'http://127.0.0.1:8000/api/imoveis/'
 
@@ -11,7 +12,25 @@ export class ImovelService {
 
   constructor(private http:HttpClient) { }
 
-  getAll(){
-    return this.http.get<Imovel[]>(url)
+  getAll(page:number){
+    return this.http.get<ImoveisResult>(url+"?page="+page)
   }
+
+  get(id:number){
+    return this.http.get<Imovel>(url+id)
+  }
+
+  inserir(imovel:Imovel){
+    return this.http.post<Imovel>(url,imovel)
+  }
+
+  atualizar(id:number,imovel:Imovel){
+    return this.http.put<Imovel>(url+id,imovel)
+  }
+
+  delete(id:number){
+    return this.http.delete<Imovel>(url+id)
+  }
+
+
 }

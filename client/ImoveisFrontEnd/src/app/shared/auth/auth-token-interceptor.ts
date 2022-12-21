@@ -34,17 +34,17 @@ import {
         } else {
             if(!this.jwtHelper.isTokenExpired(tok.refresh)){
                 return this.authService.refreshToken(tok.refresh).pipe(
-                switchMap((access:string) => {
-                    tok.access=access
+                switchMap((token:TokenModel) => {
+                    tok.access=token.access
                     localStorage.setItem('tokens', JSON.stringify(tok));
                     var user = this.jwtHelper.decodeToken(
-                        access
+                        tok.access
                     ) as User;
                     this.authService.user.next(user);
                     const transformedReq = req.clone({
                     headers: req.headers.set(
                     'Authorization',
-                    `bearer ${access}`
+                    `bearer ${tok.access}`
                     ),
                     });
                     return next.handle(transformedReq);

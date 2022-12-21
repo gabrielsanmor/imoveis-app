@@ -27,6 +27,9 @@ class ImovelSerializerMin(serializers.ModelSerializer):
     def get_imagens(self,obj):
         request = self.context.get('request')
         aux = AnexoImovel.objects.filter(imovel=obj).first()
-        aux = ImovelAnexoSerializer(aux).data
-        aux['imagem']= request.build_absolute_uri(aux['imagem'])
-        return aux
+        if(aux):
+            aux = ImovelAnexoSerializer(aux).data
+            aux['imagem']= request.build_absolute_uri(aux['imagem'])
+            return [aux]
+        else:
+            return [None]

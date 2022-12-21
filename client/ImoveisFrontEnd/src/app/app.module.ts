@@ -17,6 +17,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddImoveisComponent } from './components/add-imoveis/add-imoveis.component';
 import { ImoveisComponent } from './components/imoveis/imoveis.component';
+import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import { ImovelComponent } from './components/imovel/imovel.component';
 
 export function jwtOptionFactor(authService:AuthService){
   return {
@@ -41,7 +43,9 @@ export function jwtOptionFactor(authService:AuthService){
     HomeComponent,
     DashboardComponent,
     AddImoveisComponent,
-    ImoveisComponent
+    ImoveisComponent,
+    EditarUsuarioComponent,
+    ImovelComponent
   ],
   imports: [
     BrowserModule,

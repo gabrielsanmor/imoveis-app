@@ -2,9 +2,20 @@
   flex: 1 1 auto;
 }
 
-mat-drawer-content {
-  padding: 12px;
+.buttonD{
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+mat-drawer-content{
+  flex:1 1 1;
+  display: flex;
+}
+
+mat-drawer {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }

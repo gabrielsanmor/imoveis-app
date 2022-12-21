@@ -51,12 +51,12 @@ export class AuthService {
   }
 
   refreshToken(refresh:string){
-    return this.http.post<string>(auth_url+'login/refresh/',{
+    return this.http.post<TokenModel>(auth_url+'login/refresh/',{
       'refresh':refresh
     },httpOptions)
   }
 
-  public getAccessToken():string|null{
+  public async getAccessToken():Promise<string|null>{
     var aux = localStorage.getItem('tokens')
 
     if(aux){
@@ -70,17 +70,14 @@ export class AuthService {
           return "";
         }else{
           this.refreshToken(tok.refresh).pipe(
-            switchMap(
-              (response:string, i:number) => {
-                var j:TokenModel= {} as TokenModel
-                j.access=response
-                localStorage.setItem('tokens', JSON.stringify(tok));
-                var user = this.jwtService.decodeToken(
-                    tok.access
-                ) as User;
-                this.user.next(user);
-
-                return of(response)
+            switchMap((a:TokenModel)=>{
+              tok.access=a.access
+              localStorage.setItem('tokens', JSON.stringify(tok));
+              var user = this.jwtService.decodeToken(
+                tok.access
+              ) as User;
+              this.user.next(user);
+              return of(true)
               }
             )
           )
