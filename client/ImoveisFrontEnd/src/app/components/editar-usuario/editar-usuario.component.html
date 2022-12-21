@@ -1,1 +1,70 @@
-<p>editar-usuario works!</p>
+<div class="main-div">
+  <mat-card>
+      <mat-card-title>
+        Editar Usuário
+      </mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="editar" (ngSubmit)="edit()">
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Username" formControlName="username" [readonly]="true">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Nome" formControlName="first_name">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Sobrenome" formControlName="last_name">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Confirmar Senha" type="password" formControlName="senha">
+            </mat-form-field>
+          </p>
+          <div class="div-bot">
+            <div class="button-end">
+              <button mat-raised-button color="primary" type="submit" mat-button>Salvar Dados</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      Trocar Senha
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="troc" (ngSubmit)="trocar()">
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Senha" type="password" formControlName="senha">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Senha Nova" type="password" formControlName="senha_nova">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Confirmar Senha" type="password" formControlName="senha_nova2">
+          </mat-form-field>
+        </p>
+        <div class="div-bot">
+          <div class="button-end">
+            <button mat-raised-button color="primary" type="submit" mat-button>Salvar Dados</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+</mat-card>
+</div>

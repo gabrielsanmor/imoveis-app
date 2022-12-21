@@ -1,3 +1,10 @@
+:host{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+    margin: 0;
+}
+
 .spacer{
   flex: 1 1 auto;
 }
@@ -8,10 +15,22 @@
   margin-bottom: 12px;
 }
 
-mat-drawer-content{
-  flex:1 1 1;
+mat-toolbar{
+  flex:0 1 auto;
+}
+
+mat-drawer-container{
+  height:auto;
+  flex:1 1 auto;
   display: flex;
 }
+
+mat-drawer-content{
+  height:auto;
+  flex:1 1 auto;
+  display: flex;
+}
+
 
 mat-drawer {
   display: flex;

@@ -1,0 +1,46 @@
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+:host{
+  flex: 1 1 auto
+}
+
+.main-div{
+  display: flex;
+  flex-direction:row;
+  width:100%;
+  height:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+.button-end {
+  flex:1;
+  display:flex;
+  justify-content: flex-end;
+}
+
+
+.button-start {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.div-bot{
+  display:flex;
+  align-items:center;
+}
+
+mat-card{
+  margin-right: 25px;
+  margin-left: 25px;
+}
+

@@ -7,7 +7,7 @@ class Imovel(models.Model):
     exibicao = models.CharField(max_length=100)
     descricao = models.TextField()
     tipo = models.PositiveSmallIntegerField(default=1)
-    area = models.PositiveBigIntegerField(default=100)
+    area = models.FloatField()
     logradouro = models.CharField(max_length=500)
     valor_compra = models.DecimalField(max_digits=15,decimal_places=2)
     valor_venda = models.DecimalField(max_digits=15,decimal_places=2, null=True,default=None)

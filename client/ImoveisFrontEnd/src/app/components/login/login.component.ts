@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
   submit(){
     var aux:LoginModel = this.login.value
     this.authService.login(aux).subscribe({
-      next(value) {
+      next: (value) => {
           console.log(value)
+          this.router.navigate(['/'])
       },
       error(err) {
         console.log(err)

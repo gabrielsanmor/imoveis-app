@@ -1,0 +1,11 @@
+:host{
+  flex:1 1 auto;
+}
+
+.button-end {
+  margin-top:50px;
+  margin-right:50px;
+  flex:1;
+  display:flex;
+  justify-content: flex-end;
+}

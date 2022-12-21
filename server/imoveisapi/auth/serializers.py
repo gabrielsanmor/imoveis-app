@@ -1,6 +1,7 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 
@@ -82,7 +83,7 @@ class TrocarSenhaSerializer(serializers.ModelSerializer):
         if user.pk != instance.pk:
             raise serializers.ValidationError({"authorize": "Você não tem permissão para esse usuário"})
 
-        instance.setPassword(validated_data['senha'])
+        instance.password=make_password(validated_data['senha_nova'])
         instance.save()
         
         return instance

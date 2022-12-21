@@ -7,6 +7,8 @@ import { TokenModel } from '../shared/auth/token-model';
 import { User } from '../model/user.model';
 import { CadastroModel } from '../model/cadastro-model';
 import { Token } from '@angular/compiler';
+import { TrocarSenha } from '../model/trocar-senha.model';
+import { Atualizar } from '../model/atualizar.model';
 
 const auth_url = 'http://127.0.0.1:8000/auth/'
 
@@ -48,6 +50,18 @@ export class AuthService {
 
   cadastro(cadastro:CadastroModel){
     return this.http.post(auth_url+'cadastro/',cadastro)
+  }
+
+  trocarSenha(trocar:TrocarSenha,id:number){
+    return this.http.put(auth_url+'trocar_senha/'+id+'/',trocar)
+  }
+
+  logout(){
+    localStorage.clear()
+  }
+
+  editarUsuario(edit:Atualizar,id:number){
+    return this.http.put(auth_url+'atualizar_usuario/'+id+'/',edit)
   }
 
   refreshToken(refresh:string){

@@ -1,9 +1,52 @@
-<h3>
+<mat-card>
+  <mat-card-title>
     Cadastrar Imóvel
-</h3>
-<p>
-  <mat-form-field>
-    <input matInput placeholder="Logradouro">
-    <mat-icon matSuffix>signpost</mat-icon>
-  </mat-form-field>
-</p>
+  </mat-card-title>
+  <mat-card-content>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Nome de Exibição">
+        <mat-icon matSuffix>edit</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Logradouro">
+        <mat-icon matSuffix>signpost</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <textarea matInput placeholder="Descrição">
+        </textarea>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Area">
+        <mat-icon matSuffix>crop_square</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Valor de compra">
+        <mat-icon matSuffix>payments</mat-icon>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Valor de venda">
+        <mat-icon matSuffix>paid</mat-icon>
+        <mat-hint>
+          Caso esteja em estoque deixe este campo vazio
+        </mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+        <button type="button" mat-raised-button (click)="fileInput.click()">Selecione arquivo</button>
+        <input hidden (change)="onFileSelected($event)" accept="image/*" #fileInput type="file" id="file">
+    </p>
+  </mat-card-content>
+</mat-card>
