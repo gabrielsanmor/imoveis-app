@@ -19,15 +19,17 @@ export class ImovelService {
   }
 
   get(id:number){
-    return this.http.get<Imovel>(url+id)
+    return this.http.get<Imovel>(url+id+'/')
   }
 
   inserir(imovel:Imovel){
+    imovel.valor_compra=Number.parseFloat((Math.round(imovel.valor_compra!! * 100) / 100).toFixed(2))
+    imovel.valor_venda=Number.parseFloat((Math.round(imovel.valor_venda!! * 100) / 100).toFixed(2))
     return this.http.post<Imovel>(url+"add/",imovel)
   }
 
   atualizar(id:number,imovel:Imovel){
-    return this.http.put<Imovel>(url+id,imovel)
+    return this.http.put<Imovel>(url+id+'/',imovel)
   }
 
   delete(id:number){

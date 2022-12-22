@@ -2,6 +2,7 @@
   margin: 0%;
   flex:1 1 auto;
   display: flex;
+  margin-top: 20ox;
   justify-content: center;
   align-items: center;
   flex-direction: column;

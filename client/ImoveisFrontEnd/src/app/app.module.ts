@@ -19,6 +19,7 @@ import { AddImoveisComponent } from './components/add-imoveis/add-imoveis.compon
 import { ImoveisComponent } from './components/imoveis/imoveis.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { ImovelComponent } from './components/imovel/imovel.component';
+import { EditarImovelComponent } from './components/editar-imovel/editar-imovel.component';
 
 export function jwtOptionFactor(authService:AuthService){
   return {
@@ -48,7 +49,8 @@ export function jwtOptionFactor(authService:AuthService){
     AddImoveisComponent,
     ImoveisComponent,
     EditarUsuarioComponent,
-    ImovelComponent
+    ImovelComponent,
+    EditarImovelComponent
   ],
   imports: [
     BrowserModule,

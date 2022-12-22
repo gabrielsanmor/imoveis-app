@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddImoveisComponent } from './components/add-imoveis/add-imoveis.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditarImovelComponent } from './components/editar-imovel/editar-imovel.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
 import { HomeComponent } from './components/home/home.component';
 import { ImoveisComponent } from './components/imoveis/imoveis.component';
@@ -15,8 +16,9 @@ const routes: Routes = [
   children:[
     {path:'dashboard',component:DashboardComponent},
     {path:'imoveis',component:ImoveisComponent},
-    {path:'imoveis/:page',component:ImoveisComponent},
     {path:'imoveis/add',component:AddImoveisComponent},
+    {path:'imoveis/editar/:id',component:EditarImovelComponent},
+    {path:'imoveis/:page',component:ImoveisComponent},
     {path:'editar-usuario',component:EditarUsuarioComponent}
   ],
   canActivate:[AuthGuard],data:{requiredAuth:true}},

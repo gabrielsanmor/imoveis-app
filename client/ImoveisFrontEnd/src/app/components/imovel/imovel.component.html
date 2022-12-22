@@ -6,14 +6,15 @@
     <b>{{imovel?.exibicao}}</b>
     <p>{{imovel?.descricao}}</p>
     <p><b>Logradouro:</b> {{imovel?.logradouro}}</p>
+    <p *ngIf="lucro"><b>Percentual de lucro:</b> {{lucro}}%</p>
     <div class="card-fot">
       <div>
         <b>Valor de Compra</b>
-        <p>{{imovel?.valor_compra}}<p>
+        <p>R$ {{imovel?.valor_compra}}<p>
       </div>
       <div class="card-info"*ngIf="imovel?.valor_venda;else elseBlock">
         <b>Valor de Venda</b>
-        <p>{{imovel?.valor_venda}}<p>
+        <p>R$ {{imovel?.valor_venda}}<p>
       </div>
       <ng-template #elseBlock>
         <div class="card-info">
@@ -27,6 +28,16 @@
         <b>Area</b>
         <p>{{imovel?.area}}m²<p>
       </div>
+    </div>
+    <div class="card-fot">
+      <button mat-button color="primary" (click)="onClick()">
+        <mat-icon>edit</mat-icon>
+        Editar
+      </button>
+      <button mat-button color="warn">
+        <mat-icon>delete</mat-icon>
+        Excluir
+      </button>
     </div>
   </div>
 </mat-card>

@@ -9,7 +9,7 @@
   <app-imovel *ngFor="let imovel of imoveis" [imovel]="imovel"></app-imovel>
 </div>
 
-<div class="div-fot">
+<div class="div-fot" *ngIf="pageN">
   <div class="fot">
   <button mat-icon-button *ngIf="pageN!=1" (click)="atualizarPagina(-1)">
     <mat-icon>

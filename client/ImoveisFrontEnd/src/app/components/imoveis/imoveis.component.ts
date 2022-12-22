@@ -15,16 +15,19 @@ export class ImoveisComponent implements OnInit {
   imovelResult?:ImoveisResult
   imoveis?:Imovel[]
   proxima=true
+  pin=false
   pageN:number=1
 
   constructor(private imovelService:ImovelService,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute,
+    private router:Router) { }
 
   ngOnInit(): void {
     var page = this.route.snapshot.paramMap.get('page')
     this.pageN = Number.parseInt(page!!)
     if(!page||this.pageN<=0){
       this.pageN=1
+      this.pin=true
     }
     this.consultar()
 
@@ -32,6 +35,7 @@ export class ImoveisComponent implements OnInit {
 
   atualizarPagina(n:number){
     this.pageN=this.pageN+n
+    this.router.navigate(['/imoveis/'+this.pageN])
     this.consultar()
   }
 

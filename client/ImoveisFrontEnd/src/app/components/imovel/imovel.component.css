@@ -2,20 +2,22 @@ mat-card{
   flex-direction: row;
   display: flex;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .format{
   width:210px;
   height:150px;
   background-color: gray;
-  border: none;
+  border: 0;
 }
 
 :host{
   align-self: flex-end;
   margin-right: 40px;
   margin-left: 40px;
-  min-width: 43vw;
+  max-width: fit-content;
+
 }
 
 .card-info{

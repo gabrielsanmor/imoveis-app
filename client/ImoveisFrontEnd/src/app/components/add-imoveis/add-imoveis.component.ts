@@ -71,7 +71,5 @@ export class AddImoveisComponent implements OnInit {
           })
         return of(true)
     })).subscribe()
-
   }
-
 }

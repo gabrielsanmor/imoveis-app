@@ -22,7 +22,7 @@ class ImovelSerializerMin(serializers.ModelSerializer):
 
     class Meta:
         model = Imovel
-        fields = ['exibicao','descricao','area','logradouro','valor_compra','valor_venda','imagens']
+        fields = ['id','exibicao','descricao','area','logradouro','valor_compra','valor_venda','imagens']
     
     def get_imagens(self,obj):
         request = self.context.get('request')
@@ -33,3 +33,14 @@ class ImovelSerializerMin(serializers.ModelSerializer):
             return [aux]
         else:
             return [None]
+
+class DashboardSerializer(serializers.Serializer):
+    
+    maior_lucro = serializers.SerializerMethodField()
+    quantidade = serializers.SerializerMethodField()
+    em_estoque= serializers.SerializerMethodField()
+    mais_recente = serializers.SerializerMethodField()
+    lucro_total = serializers.SerializerMethodField()
+    
+    class Meta:
+        fields = ['']

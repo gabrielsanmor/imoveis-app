@@ -1,8 +1,11 @@
 <mat-card>
   <mat-card-title>
-    Cadastrar Imóvel
+    Editar Imóvel
   </mat-card-title>
   <mat-card-content>
+    <div class="div-row">
+      <div class="div-col">
+
     <form [formGroup]="imov" (ngSubmit)="submit()">
     <p>
       <mat-form-field>
@@ -45,14 +48,18 @@
         </mat-hint>
       </mat-form-field>
     </p>
-    <div class="button-end">
-      <button mat-raised-button color="primary" type="submit" [disabled]="enviando">Salvar Dados</button>
-    </div>
-    </form>
-    <p>
-        <button type="button" mat-raised-button (click)="fileInput.click()">Adicionar anexo</button>
+      <div class="div-row">
+        <button type="button" mat-raised-button (click)="fileInput.click()" [disabled]="enviando">Adicionar anexo</button>
         <input hidden (change)="onFileSelected($event)" accept="image/*" #fileInput type="file" id="file">
-    </p>
+
+        <div class="button-end">
+          <button mat-raised-button color="primary" type="submit" [disabled]="enviando">Salvar Dados</button>
+        </div>
+
+      </div>
+    </form>
+
+
     <p *ngFor="let a of images; trackBy:atualizar">
       {{a.name}}
       <button mat-icon-button color="warn" (click)="remover(a)">
@@ -61,5 +68,20 @@
         </mat-icon>
       </button>
     </p>
+    </div>
+      <div class="div-col-b">
+          <p *ngFor="let b of imagesInicio; trackBy: anAt">
+            <span class="button-end">
+
+            <button mat-icon-button color="warn">
+              <mat-icon>
+                delete
+              </mat-icon>
+            </button>
+            </span>
+            <img class="format"src="{{b.imagem}}">
+          </p>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
