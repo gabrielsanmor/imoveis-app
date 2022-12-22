@@ -3,6 +3,7 @@ from rest_framework import generics
 from rest_framework import viewsets
 from .models import Imovel,AnexoImovel
 from .serializers import *
+from rest_framework.parsers import FormParser, MultiPartParser,JSONParser
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
@@ -31,6 +32,12 @@ class AnexoImovelList(generics.ListAPIView, viewsets.ViewSet):
         imovel = self.kwargs['imovel']
         return AnexoImovelList.objects.filter(imovel__id=imovel)
 
-class AnexoImovelCreate(generics.CreateAPIView, viewsets.ViewSet):
+class AnexoImovelCreate(viewsets.ModelViewSet):
     queryset = AnexoImovel.objects.all()
+    parser_classes = (MultiPartParser, FormParser,)
     serializer_class = ImovelAnexoSerializer
+
+    def perform_create(self, serializer):
+        print(self.request.data)
+        imovel = Imovel.objects.get(id=self.request.data.get('imovel'))
+        serializer.save(imovel=imovel,imagem=self.request.data.get('imagem'))

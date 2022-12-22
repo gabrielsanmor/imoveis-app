@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ImoveisResult } from 'src/app/model/imoveis-result-model';
 import { Imovel } from 'src/app/model/imovel.model';
 import { ImovelService } from 'src/app/services/imovel.service';
@@ -13,13 +14,32 @@ export class ImoveisComponent implements OnInit {
 
   imovelResult?:ImoveisResult
   imoveis?:Imovel[]
+  proxima=true
+  pageN:number=1
 
-  constructor(private imovelService:ImovelService) { }
+  constructor(private imovelService:ImovelService,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.imovelService.getAll(1).subscribe({
+    var page = this.route.snapshot.paramMap.get('page')
+    this.pageN = Number.parseInt(page!!)
+    if(!page||this.pageN<=0){
+      this.pageN=1
+    }
+    this.consultar()
+
+  }
+
+  atualizarPagina(n:number){
+    this.pageN=this.pageN+n
+    this.consultar()
+  }
+
+  consultar(){
+    this.imovelService.getAll(this.pageN).subscribe({
       next: (data) => {
         this.imovelResult=data
+        this.proxima=data.next!=null
         this.imoveis= this.imovelResult.results
         console.log(this.imoveis)
       }, error: (e) =>{
@@ -27,5 +47,6 @@ export class ImoveisComponent implements OnInit {
       }
     })
   }
+
 
 }

@@ -1,10 +1,9 @@
 import { Anexo } from "./anexo.model";
 
 export interface Imovel{
-  pk?: number;
+  id?: number;
   exibicao?: string;
   descricao?: string;
-  tipo?: number;
   area?: number;
   logradouro?: string;
   valor_compra?: number;

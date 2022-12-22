@@ -70,7 +70,7 @@ export class AuthService {
     },httpOptions)
   }
 
-  public async getAccessToken():Promise<string|null>{
+  public getAccessToken():string|null{
     var aux = localStorage.getItem('tokens')
 
     if(aux){

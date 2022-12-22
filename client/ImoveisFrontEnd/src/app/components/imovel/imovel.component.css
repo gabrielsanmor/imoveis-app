@@ -1,9 +1,29 @@
 mat-card{
   flex-direction: row;
   display: flex;
+  margin-top: 10px;
 }
 
 .format{
-  width:300px;
-  height:200px;
+  width:210px;
+  height:150px;
+  background-color: gray;
+  border: none;
+}
+
+:host{
+  align-self: flex-end;
+  margin-right: 40px;
+  margin-left: 40px;
+  min-width: 43vw;
+}
+
+.card-info{
+  margin-left: 20px;
+  flex-direction: column;
+}
+
+.card-fot{
+  display: flex;
+  flex-direction: row;
 }

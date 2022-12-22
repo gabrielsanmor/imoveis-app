@@ -1,9 +1,26 @@
 <div class="button-end">
-  <button mat-mini-fab color="primary" [routerLink]="['add']">
+  <button mat-mini-fab class="but" color="primary" [routerLink]="['add']">
     <mat-icon>
       add
     </mat-icon>
   </button>
 </div>
+<div class="jun">
+  <app-imovel *ngFor="let imovel of imoveis" [imovel]="imovel"></app-imovel>
+</div>
 
-<app-imovel *ngFor="let imovel of imoveis" [imovel]="imovel"></app-imovel>
+<div class="div-fot">
+  <div class="fot">
+  <button mat-icon-button *ngIf="pageN!=1" (click)="atualizarPagina(-1)">
+    <mat-icon>
+      arrow_back
+    </mat-icon>
+  </button>
+  {{pageN}}
+  <button mat-icon-button *ngIf="proxima" (click)="atualizarPagina(1)">
+    <mat-icon>
+      arrow_forward
+    </mat-icon>
+  </button>
+  </div>
+</div>

@@ -15,6 +15,7 @@ const routes: Routes = [
   children:[
     {path:'dashboard',component:DashboardComponent},
     {path:'imoveis',component:ImoveisComponent},
+    {path:'imoveis/:page',component:ImoveisComponent},
     {path:'imoveis/add',component:AddImoveisComponent},
     {path:'editar-usuario',component:EditarUsuarioComponent}
   ],

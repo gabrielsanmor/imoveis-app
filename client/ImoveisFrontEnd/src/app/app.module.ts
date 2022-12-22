@@ -30,6 +30,9 @@ export function jwtOptionFactor(authService:AuthService){
       "http://localhost:8000/auth/login/",
       "http://localhost:8000/auth/login/refresh/",
       "http://localhost:8000/auth/cadastro/",
+      "http://127.0.0.1:8000/auth/login/",
+      "http://127.0.0.1:8000/auth/login/refresh/",
+      "http://127.0.0.1:8000/auth/cadastro/",
     ]
 
   }

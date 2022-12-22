@@ -1,7 +1,32 @@
 <mat-card>
-  <div class="format">
-    <img src="{{img}}">
+  <div>
+    <img class="format"src="{{img}}">
   </div>
-
-{{imovel?.exibicao}}
+  <div class="card-info">
+    <b>{{imovel?.exibicao}}</b>
+    <p>{{imovel?.descricao}}</p>
+    <p><b>Logradouro:</b> {{imovel?.logradouro}}</p>
+    <div class="card-fot">
+      <div>
+        <b>Valor de Compra</b>
+        <p>{{imovel?.valor_compra}}<p>
+      </div>
+      <div class="card-info"*ngIf="imovel?.valor_venda;else elseBlock">
+        <b>Valor de Venda</b>
+        <p>{{imovel?.valor_venda}}<p>
+      </div>
+      <ng-template #elseBlock>
+        <div class="card-info">
+          <b>Valor de Venda</b>
+          <p>
+          <b>Em estoque!</b>
+          </p>
+        </div>
+      </ng-template>
+      <div class="card-info">
+        <b>Area</b>
+        <p>{{imovel?.area}}m²<p>
+      </div>
+    </div>
+  </div>
 </mat-card>

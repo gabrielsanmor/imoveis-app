@@ -3,50 +3,63 @@
     Cadastrar Imóvel
   </mat-card-title>
   <mat-card-content>
+    <form [formGroup]="imov" (ngSubmit)="submit()">
     <p>
       <mat-form-field>
-        <input matInput placeholder="Nome de Exibição">
+        <input matInput placeholder="Nome de Exibição" formControlName="exibicao">
         <mat-icon matSuffix>edit</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput placeholder="Logradouro">
+        <input matInput placeholder="Logradouro" formControlName="logradouro">
         <mat-icon matSuffix>signpost</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <textarea matInput placeholder="Descrição">
+        <textarea matInput placeholder="Descrição" formControlName="descricao">
         </textarea>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput placeholder="Area">
+        <input matInput placeholder="Area em m²" formControlName="area">
         <mat-icon matSuffix>crop_square</mat-icon>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field>
-        <input matInput placeholder="Valor de compra">
+        <input matInput placeholder="Valor de compra" formControlName="valor_compra">
         <mat-icon matSuffix>payments</mat-icon>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field>
-        <input matInput placeholder="Valor de venda">
+        <input matInput placeholder="Valor de venda" formControlName="valor_venda">
         <mat-icon matSuffix>paid</mat-icon>
         <mat-hint>
           Caso esteja em estoque deixe este campo vazio
         </mat-hint>
       </mat-form-field>
     </p>
+    <div class="button-end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="enviando">Salvar Dados</button>
+    </div>
+    </form>
     <p>
-        <button type="button" mat-raised-button (click)="fileInput.click()">Selecione arquivo</button>
+        <button type="button" mat-raised-button (click)="fileInput.click()">Adicionar anexo</button>
         <input hidden (change)="onFileSelected($event)" accept="image/*" #fileInput type="file" id="file">
+    </p>
+    <p *ngFor="let a of images; trackBy:atualizar">
+      {{a.name}}
+      <button mat-icon-button color="warn" (click)="remover(a)">
+        <mat-icon>
+          close
+        </mat-icon>
+      </button>
     </p>
   </mat-card-content>
 </mat-card>

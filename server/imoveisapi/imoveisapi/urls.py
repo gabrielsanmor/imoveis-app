@@ -23,11 +23,11 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('imoveis',views.ImoveisList,basename='Imoveis')
-router.register('imoveis',views.ImoveisCreate,basename='Imoveis')
+router.register('imoveis/add',views.ImoveisCreate,basename='Imoveis')
 router.register('imoveis',views.ImoveisDetail,basename='Imoveis')
-router.register('anexos',views.AnexoImovelDetail,basename='Anexos')
-router.register('anexos/<int:imovel>',views.AnexoImovelList,basename='Anexos')
-router.register('anexos',views.AnexoImovelCreate,basename='Anexos')
+router.register('imoveis/anexo/detail',views.AnexoImovelDetail,basename='Anexos')
+router.register('imoveis/anexo/<int:imovel>',views.AnexoImovelList,basename='Anexos')
+router.register('imoveis/anexo/add',views.AnexoImovelCreate,basename='Anexos')
 
 
 

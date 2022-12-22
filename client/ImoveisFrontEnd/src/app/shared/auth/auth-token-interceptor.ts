@@ -23,11 +23,12 @@ import {
       if (req.url.indexOf('login') > -1 || req.url.indexOf('refresh') > -1 || req.url.indexOf('cadastro') > -1) {
         return next.handle(req);
       }
-
+      this.authService.getAccessToken()
       const localStorageTokens = localStorage.getItem('tokens');
       var tok: TokenModel;
       if (localStorageTokens) {
         tok = JSON.parse(localStorageTokens) as TokenModel;
+        tok.access =this.authService.getAccessToken()!!
         var isTokenExpired = this.jwtHelper.isTokenExpired(tok?.access);
         if (!isTokenExpired) {
             return next.handle(req);

@@ -15,7 +15,12 @@ export class ImovelComponent implements OnInit {
   img? :String
 
   ngOnInit(): void {
-    this.img=this.imovel?.imagens[0].imagem
+    if(this.imovel?.imagens[0]!=null){
+      this.img=this.imovel?.imagens[0].imagem
+    }
+    else{
+      this.img=""
+    }
   }
 
 }

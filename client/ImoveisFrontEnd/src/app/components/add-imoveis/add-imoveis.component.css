@@ -7,6 +7,12 @@
   flex-direction: column;
 }
 
+.button-end {
+  flex:1;
+  display:flex;
+  justify-content: flex-end;
+}
+
 mat-form-field {
   width: 100%;
   min-width: 300px;

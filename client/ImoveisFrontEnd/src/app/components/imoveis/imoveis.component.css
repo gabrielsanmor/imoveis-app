@@ -1,11 +1,37 @@
 :host{
   flex:1 1 auto;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
+.jun{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.div-fot{
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.fot{
+  min-width: 100px
 }
 
 .button-end {
-  margin-top:50px;
-  margin-right:50px;
-  flex:1;
+  margin-top:20px;
+  width:100%;
+  align-items: top;
   display:flex;
   justify-content: flex-end;
+}
+
+.but{
+  margin-right:50px;
 }

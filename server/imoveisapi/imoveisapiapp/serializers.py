@@ -15,14 +15,14 @@ class ImovelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Imovel
-        fields = ['id','exibicao','descricao','tipo','area','logradouro','valor_compra','valor_venda','imagens']
+        fields = ['id','exibicao','descricao','area','logradouro','valor_compra','valor_venda','imagens']
 
 class ImovelSerializerMin(serializers.ModelSerializer):
     imagens = serializers.SerializerMethodField()
 
     class Meta:
         model = Imovel
-        fields = ['exibicao','descricao','tipo','area','logradouro','valor_compra','valor_venda','imagens']
+        fields = ['exibicao','descricao','area','logradouro','valor_compra','valor_venda','imagens']
     
     def get_imagens(self,obj):
         request = self.context.get('request')

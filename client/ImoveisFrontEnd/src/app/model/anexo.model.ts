@@ -1,5 +1,4 @@
 export interface Anexo{
-  pk?: number;
+  id?: number;
   imagem?: string;
 }
-  
