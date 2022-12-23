@@ -9,7 +9,7 @@
 <p>Ao fim desta seção existe um compilado dos comandos justificados no README</p>
 <p>Utilizando o python 3.10 abra a pasta do projeto no terminal vamos criar o ambiente virtual</p>
 <b><p>cd server</p>
-<p>py venv .venv</p></b>
+<p>py -m venv .venv</p></b>
 <p>Isso irá criar um ambiente virtual para que possamos instalar as dependencias necessárias para o projeto, mas ainda precisamos ativa-lo</p>
 <b><p>.venv\Scripts\activate</p></b>
 <p>Se tudo estiver certo você verá um "(.venv)" ao lado do caminho no seu terminal, agora iremos instalar as dependencias necessárias</p>
