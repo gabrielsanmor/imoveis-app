@@ -47,5 +47,6 @@ class AnexoImovelCreate(viewsets.ModelViewSet):
         serializer.save(imovel=imovel,imagem=self.request.data.get('imagem'))
 
 class Dashboard(generics.ListAPIView,viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     queryset=Imovel.objects.all()[:1]
     serializer_class = DashboardSerializer
