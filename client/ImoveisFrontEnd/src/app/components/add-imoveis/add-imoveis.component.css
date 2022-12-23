@@ -8,6 +8,12 @@
   flex-direction: column;
 }
 
+.div-row{
+  flex-wrap:wrap;
+  display:flex;
+  flex-direction:row;
+}
+
 .button-end {
   flex:1;
   display:flex;

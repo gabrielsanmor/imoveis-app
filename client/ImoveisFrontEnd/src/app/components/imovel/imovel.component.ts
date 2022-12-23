@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Imovel } from 'src/app/model/imovel.model';
+import { ImovelService } from 'src/app/services/imovel.service';
 
 @Component({
   selector: 'app-imovel',
@@ -10,7 +12,9 @@ import { Imovel } from 'src/app/model/imovel.model';
 export class ImovelComponent implements OnInit {
 
 
-  constructor(private router:Router) { }
+  constructor(
+    private router:Router,
+    private mat:MatDialog) { }
 
   @Input() imovel?:Imovel
   img? :String
@@ -32,7 +36,36 @@ export class ImovelComponent implements OnInit {
 
   onClick(){
     this.router.navigate(['imoveis/editar/'+this.imovel?.id])
-
   }
 
+  deletarAviso(a:Imovel){
+    this.mat.open(ImovelDialogDelete,{data:a}).afterClosed().subscribe(
+      resposta => {
+        if(resposta)
+          window.location.reload()
+      }
+    )
+  }
+
+}
+
+@Component({
+  selector: 'imovel-delete',
+  templateUrl: './imovel-delete.html',
+})
+export class ImovelDialogDelete {
+  constructor(
+    public dialogRef: MatDialogRef<ImovelDialogDelete>,
+    @Inject(MAT_DIALOG_DATA) public data: Imovel,
+    private imovelService:ImovelService
+  ) {}
+
+  deletar(){
+    this.imovelService.delete(this.data.id!!).subscribe({
+      next: (value) => {
+      },error: (err) => {
+        console.log(err)
+      }
+    })
+  }
 }

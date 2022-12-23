@@ -28,8 +28,7 @@ router.register('imoveis',views.ImoveisDetail,basename='Imoveis')
 router.register('imoveis/anexo/detail',views.AnexoImovelDetail,basename='Anexos')
 router.register('imoveis/anexo/<int:imovel>',views.AnexoImovelList,basename='Anexos')
 router.register('imoveis/anexo/add',views.AnexoImovelCreate,basename='Anexos')
-
-
+router.register('dashboard',views.Dashboard,basename='Dashboard')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

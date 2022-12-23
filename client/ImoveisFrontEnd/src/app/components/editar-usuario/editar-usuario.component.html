@@ -32,7 +32,7 @@
           </p>
           <div class="div-bot">
             <div class="button-end">
-              <button mat-raised-button color="primary" type="submit" mat-button>Salvar Dados</button>
+              <button mat-raised-button color="primary" type="submit" [disabled]="enviando||editar.invalid">Salvar Dados</button>
             </div>
           </div>
         </form>
@@ -51,7 +51,7 @@
         </p>
         <p>
           <mat-form-field>
-            <input matInput placeholder="Senha Nova" type="password" formControlName="senha_nova">
+            <input matInput placeholder="Senha Nova" type="password" formControlName="senha_nova" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
           </mat-form-field>
         </p>
         <p>
@@ -61,7 +61,7 @@
         </p>
         <div class="div-bot">
           <div class="button-end">
-            <button mat-raised-button color="primary" type="submit" mat-button>Salvar Dados</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="enviando||troc.invalid">Salvar Dados</button>
           </div>
         </div>
       </form>

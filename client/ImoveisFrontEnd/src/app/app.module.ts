@@ -18,8 +18,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddImoveisComponent } from './components/add-imoveis/add-imoveis.component';
 import { ImoveisComponent } from './components/imoveis/imoveis.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
-import { ImovelComponent } from './components/imovel/imovel.component';
-import { EditarImovelComponent } from './components/editar-imovel/editar-imovel.component';
+import { ImovelComponent, ImovelDialogDelete } from './components/imovel/imovel.component';
+import { AnexoDialogDelete, EditarImovelComponent } from './components/editar-imovel/editar-imovel.component';
 
 export function jwtOptionFactor(authService:AuthService){
   return {
@@ -50,7 +50,9 @@ export function jwtOptionFactor(authService:AuthService){
     ImoveisComponent,
     EditarUsuarioComponent,
     ImovelComponent,
-    EditarImovelComponent
+    EditarImovelComponent,
+    AnexoDialogDelete,
+    ImovelDialogDelete
   ],
   imports: [
     BrowserModule,

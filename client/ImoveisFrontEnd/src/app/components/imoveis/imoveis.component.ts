@@ -33,6 +33,10 @@ export class ImoveisComponent implements OnInit {
 
   }
 
+  clickDes(){
+    this.router.navigate(['imoveis/add/'])
+  }
+
   atualizarPagina(n:number){
     this.pageN=this.pageN+n
     this.router.navigate(['/imoveis/'+this.pageN])

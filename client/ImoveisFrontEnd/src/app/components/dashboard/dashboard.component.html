@@ -1,10 +1,32 @@
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-<p>dashboard works!</p>
-
+<h1 class="title">Bem Vindo!</h1>
+<div class="div-tud">
+  <div class="div-tot">
+    <mat-card class="a">
+      <mat-card-title>Lucro total de venda</mat-card-title>
+      <mat-card-content>R$ {{lucroTotal}}</mat-card-content>
+    </mat-card>
+    <mat-card class="a">
+      <mat-card-title>Maior % de lucro em um imovel</mat-card-title>
+      <mat-card-content class="cl">
+        <a [routerLink]="['../','imoveis','editar',maiorLucro.id]"><b>{{maiorLucro.exibicao}}</b>
+        <p>{{maiorLucro.logradouro}}</p></a>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="a">
+      <mat-card-title>Imóveis Cadastrados</mat-card-title>
+      <mat-card-content>{{quantidade}}</mat-card-content>
+    </mat-card>
+    <mat-card class="a">
+      <mat-card-title>Imóveis em estoque</mat-card-title>
+      <mat-card-content>{{em_estoque}}</mat-card-content>
+    </mat-card>
+  </div>
+  <div class="div-tot-t">
+    <mat-card>
+      <mat-card-title>Mais recentes</mat-card-title>
+      <mat-card-content appearance="fill" class="cl">
+        <button class="but" *ngFor="let i of maisRecentes" [routerLink]="['../','imoveis','editar',i.id]">{{i.exibicao}} {{i.logradouro}}</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

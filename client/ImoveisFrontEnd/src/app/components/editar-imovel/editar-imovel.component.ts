@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { AnexoIn } from 'src/app/model/anexo-insert.model';
@@ -7,6 +7,7 @@ import { Anexo } from 'src/app/model/anexo.model';
 import { Imovel } from 'src/app/model/imovel.model';
 import { ImovelService } from 'src/app/services/imovel.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-imovel',
@@ -16,12 +17,12 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog
 export class EditarImovelComponent implements OnInit {
 
   imov = new FormGroup({
-    exibicao:new FormControl(''),
-    descricao:new FormControl(''),
-    logradouro:new FormControl(''),
-    area:new FormControl(''),
-    valor_venda:new FormControl(''),
-    valor_compra:new FormControl('')
+    exibicao:new FormControl('',Validators.required),
+    descricao:new FormControl('',Validators.required),
+    logradouro:new FormControl('',Validators.required),
+    area:new FormControl('',Validators.required),
+    valor_venda:new FormControl('',),
+    valor_compra:new FormControl('',Validators.required)
   })
 
   imovel?:Imovel={} as Imovel
@@ -29,7 +30,9 @@ export class EditarImovelComponent implements OnInit {
   enviando=false
 
   constructor(private imovelService:ImovelService,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute,
+    private sna:MatSnackBar,
+    private mat:MatDialog) { }
 
   ngOnInit(): void {
     var aux = Number.parseInt(this.route.snapshot.paramMap.get('id')!!)
@@ -45,7 +48,15 @@ export class EditarImovelComponent implements OnInit {
         this.imgInicioAt(this.imovel.imagens)
         return of(true)
       })
-    ).subscribe()
+    ).subscribe({
+      next: (value) => {
+
+      },error: (err)=>{
+
+      },complete:()=> {
+
+      }
+    })
   }
 
   submit(){
@@ -73,6 +84,7 @@ export class EditarImovelComponent implements OnInit {
     })).subscribe({
       complete: () =>{
         this.enviando=false
+        this.sna.open("Atualizado com sucesso!","Ok")
       }
     }
     )
@@ -111,19 +123,35 @@ export class EditarImovelComponent implements OnInit {
 
   }
 
+  deletarAviso(a:Anexo){
+    this.mat.open(AnexoDialogDelete,{data:a}).afterClosed().subscribe(
+      resposta => {
+        if(resposta)
+          window.location.reload()
+      }
+    )
+  }
+
 }
 
 @Component({
   selector: 'dialog-delete',
-  templateUrl: 'dialog-delete.html',
+  templateUrl: './dialog-delete.html',
 })
-export class DialogOverviewExampleDialog {
+export class AnexoDialogDelete {
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<AnexoDialogDelete>,
     @Inject(MAT_DIALOG_DATA) public data: Anexo,
+    private imovelService:ImovelService
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  deletar(){
+    this.imovelService.deleteAnexo(this.data.id!!).subscribe({
+      next: (value) => {
+        console.log(value)
+      },error: (err) => {
+        console.log(err)
+      }
+    })
   }
 }

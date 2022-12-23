@@ -24,7 +24,8 @@ export class ImovelService {
 
   inserir(imovel:Imovel){
     imovel.valor_compra=Number.parseFloat((Math.round(imovel.valor_compra!! * 100) / 100).toFixed(2))
-    imovel.valor_venda=Number.parseFloat((Math.round(imovel.valor_venda!! * 100) / 100).toFixed(2))
+    if(imovel.valor_venda)
+      imovel.valor_venda=Number.parseFloat((Math.round(imovel.valor_venda!! * 100) / 100).toFixed(2))
     return this.http.post<Imovel>(url+"add/",imovel)
   }
 
@@ -33,7 +34,11 @@ export class ImovelService {
   }
 
   delete(id:number){
-    return this.http.delete<Imovel>(url+id)
+    return this.http.delete<Imovel>(url+id+'/')
+  }
+
+  dashboard(){
+    return this.http.get<any>("http://127.0.0.1:8000/api/dashboard/")
   }
 
   inserirAnexo(anexo:AnexoIn){
@@ -44,7 +49,7 @@ export class ImovelService {
   }
 
   deleteAnexo(id:number){
-    return this.http.delete<Anexo>(url+'anexo/detail/'+id)
+    return this.http.delete<Anexo>(url+'anexo/detail/'+id+'/')
   }
 
 

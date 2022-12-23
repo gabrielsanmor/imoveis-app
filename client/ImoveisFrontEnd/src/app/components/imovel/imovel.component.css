@@ -16,8 +16,6 @@ mat-card{
   align-self: flex-end;
   margin-right: 40px;
   margin-left: 40px;
-  max-width: fit-content;
-
 }
 
 .card-info{

@@ -18,14 +18,17 @@ class ImoveisCreate(generics.CreateAPIView, viewsets.ViewSet):
     serializer_class = ImovelSerializer
 
 class ImoveisDetail(generics.RetrieveUpdateDestroyAPIView,viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Imovel.objects.all()
     serializer_class = ImovelSerializer
 
 class AnexoImovelDetail(generics.RetrieveDestroyAPIView, viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = AnexoImovel.objects.all()
     serializer_class = ImovelAnexoSerializer
     
 class AnexoImovelList(generics.ListAPIView, viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     serializer_class = ImovelAnexoSerializer
     
     def get_queryset(self):
@@ -33,6 +36,7 @@ class AnexoImovelList(generics.ListAPIView, viewsets.ViewSet):
         return AnexoImovelList.objects.filter(imovel__id=imovel)
 
 class AnexoImovelCreate(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = AnexoImovel.objects.all()
     parser_classes = (MultiPartParser, FormParser,)
     serializer_class = ImovelAnexoSerializer
@@ -41,3 +45,7 @@ class AnexoImovelCreate(viewsets.ModelViewSet):
         print(self.request.data)
         imovel = Imovel.objects.get(id=self.request.data.get('imovel'))
         serializer.save(imovel=imovel,imagem=self.request.data.get('imagem'))
+
+class Dashboard(generics.ListAPIView,viewsets.ViewSet):
+    queryset=Imovel.objects.all()[:1]
+    serializer_class = DashboardSerializer

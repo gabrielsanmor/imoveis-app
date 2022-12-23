@@ -24,35 +24,37 @@
     </p>
     <p>
       <mat-form-field>
-        <input matInput placeholder="Area em m²" formControlName="area">
+        <input matInput placeholder="Area em m²" formControlName="area" pattern="[+-]?([0-9]*[.])?[0-9]+">
         <mat-icon matSuffix>map</mat-icon>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field>
-        <input matInput placeholder="Valor de compra" formControlName="valor_compra">
+        <input matInput placeholder="Valor de compra" formControlName="valor_compra" pattern="[+-]?([0-9]*[.])?[0-9]+">
         <mat-icon matSuffix>payments</mat-icon>
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field>
-        <input matInput placeholder="Valor de venda" formControlName="valor_venda">
+        <input matInput placeholder="Valor de venda" formControlName="valor_venda" pattern="[+-]?([0-9]*[.])?[0-9]+">
         <mat-icon matSuffix>paid</mat-icon>
         <mat-hint>
           Caso esteja em estoque deixe este campo vazio
         </mat-hint>
       </mat-form-field>
     </p>
-    <div class="button-end">
-      <button mat-raised-button color="primary" type="submit" [disabled]="enviando">Salvar Dados</button>
-    </div>
-    </form>
-    <p>
-        <button type="button" mat-raised-button (click)="fileInput.click()">Adicionar anexo</button>
+      <div class="div-row">
+        <button type="button" mat-raised-button (click)="fileInput.click()" [disabled]="enviando">Adicionar anexo</button>
         <input hidden (change)="onFileSelected($event)" accept="image/*" #fileInput type="file" id="file">
-    </p>
+
+        <div class="button-end">
+          <button mat-raised-button color="primary" type="submit" [disabled]="enviando || imov.invalid">Salvar Dados</button>
+        </div>
+
+      </div>
+    </form>
     <p *ngFor="let a of images; trackBy:atualizar">
       {{a.name}}
       <button mat-icon-button color="warn" (click)="remover(a)">

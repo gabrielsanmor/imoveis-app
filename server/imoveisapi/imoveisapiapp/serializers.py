@@ -1,4 +1,5 @@
 from .models import Imovel,AnexoImovel
+from django.db.models import Max,Q,F,Sum
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -43,4 +44,27 @@ class DashboardSerializer(serializers.Serializer):
     lucro_total = serializers.SerializerMethodField()
     
     class Meta:
-        fields = ['']
+        fields = ['maior_lucro','quantidade','em_estoque','mais_recente','lucro_total']
+
+    def get_maior_lucro(self,obj):
+        aux=Imovel.objects.filter(~Q(valor_venda=None)).annotate(lucro=F('valor_venda')/F('valor_compra')).order_by('-lucro').first()
+        return ImovelSerializer(aux).data
+    
+    def get_quantidade(self,obj):
+        aux=Imovel.objects.count()
+        return aux
+    
+    def get_em_estoque(self,obj):
+        aux=Imovel.objects.filter(valor_venda=None).count()
+        return aux
+
+    def get_mais_recente(self,obj):
+        aux=Imovel.objects.all().order_by('id').reverse()[:20]
+        dat=[]
+        for i in aux:
+            dat.append(ImovelSerializer(i).data)
+        return dat
+
+    def get_lucro_total(self,obj):
+        aux=Imovel.objects.filter().annotate(lucro=F('valor_venda')/F('valor_compra')).aggregate(lucroT=Sum('lucro'))
+        return aux

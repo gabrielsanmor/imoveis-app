@@ -22,7 +22,7 @@
               <a color="primary" [routerLink]="['../','cadastro']">Cadastre-se</a>
             </div>
             <div class="button-end">
-              <button mat-raised-button color="primary" type="submit" mat-button>Login</button>
+              <button mat-raised-button color="primary" type="submit" [disabled]="enviando||login.invalid" mat-button>Login</button>
             </div>
           </div>
         </form>

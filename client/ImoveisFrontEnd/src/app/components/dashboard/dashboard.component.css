@@ -1,0 +1,61 @@
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
+
+mat-card{
+  flex: 1 1 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+
+}
+
+.but{
+  margin-top: 1px;
+}
+
+.title{
+  margin: 20px;
+}
+
+.div-tot{
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.div-tot-t{
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
+.cl{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.a{
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.div-tud{
+  flex-direction: row;
+  display: flex;
+  flex: 1 1 auto;
+}
