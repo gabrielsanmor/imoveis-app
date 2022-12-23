@@ -10,10 +10,10 @@
 <p>Utilizando o python 3.10 abra a pasta do projeto no terminal vamos criar o ambiente virtual</p>
 <b><p>cd server</p>
 <p>py venv .venv</p></b>
-<p>Isso irá criar um ambiente virtual para que possamos instalar as dependencias necessárias para o projeto nele, mas ainda precisamos ativar ele</p>
+<p>Isso irá criar um ambiente virtual para que possamos instalar as dependencias necessárias para o projeto, mas ainda precisamos ativa-lo</p>
 <b><p>.venv\Scripts\activate</p></b>
 <p>Se tudo estiver certo você verá um "(.venv)" ao lado do caminho no seu terminal, agora iremos instalar as dependencias necessárias</p>
-<p>Ainda com na pasta server, e com o venv ativo</p>
+<p>Ainda na pasta server, e com o venv ativo</p>
 <b><p>pip install -r requirements.txt</p></b>
 <p>Após isso basta aguardar e então as dependencias necessarias serão baixadas. Ao finalizar a instalação devemos migrar o banco</p>
 <b><p>cd imoveisapi</p></b>
@@ -31,7 +31,7 @@
 <p>py manage.py runserver</p></b>
 
 <h5>Extra</h5>
-<p>O Django dispõe de uma interface de admin que permite acesso direto ao banco, mas para utiliza-la é necessario criar um superusario</p>
+<p>O Django dispõe de uma interface de admin que permite acesso direto ao banco, mas para utiliza-la é necessario criar um super-usuario</p>
 <p>Isso pode ser facilmente resolvido usando</p>
 <b><p>py manage.py createsuperuser</p></b>
 <p>Após preencher os dados solicitados se pode acessar usando 127.0.0.1:8000/admin</p>
@@ -49,6 +49,3 @@
 <b><p>npm install</p></b>
 <p>E agora podemos rodar o programa</p>
 <b><p>ng serve</p></b>
-
-
-
