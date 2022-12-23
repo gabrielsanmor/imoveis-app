@@ -6,7 +6,7 @@
 <p>Necessário compatibilidadade com python 3.10</p>
 <p>Utiliza porta 8000 por padrão</p>
 <h4>Instalação</h4>
-<p>Ao fim de cada seção existe um compilado dos comandos justificados no README</p>
+<p>Ao fim desta seção existe um compilado dos comandos justificados no README</p>
 <p>Utilizando o python 3.10 abra a pasta do projeto no terminal vamos criar o ambiente virtual</p>
 <b><p>cd server</p>
 <p>py venv .venv</p></b>
